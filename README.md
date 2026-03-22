@@ -11,7 +11,7 @@ TC39 proposal to implement the `String.prototype.remove`.
 
 ## Reason
 
-The motivation behind this [proposal](https://es.discourse.group/t/implement-the-string-prototype-remove) is to
+The motivation behind this [proposal](https://es.discourse.group/t/implement-the-string-prototype-remove/2526) is to
 simplify the text replacement within JavaScript. Currently, to remove some text in a `string`, you need to use
 the `replace` or `replaceAll` methods passing an empty `string` as a second parameter. This
 is an ugly way. So this proposal doesn't change the memory value and removes the second parameter.

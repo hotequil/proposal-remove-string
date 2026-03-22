@@ -1,7 +1,7 @@
 {
   "name": "@hotequil/proposal-remove-string",
   "description": "TC39 proposal to implement the String.prototype.remove.",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "hotequil@protonmail.com",
   "homepage": "https://github.com/hotequil/proposal-remove-string#readme",
