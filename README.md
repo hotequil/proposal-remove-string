@@ -1,50 +1,64 @@
-# template-for-proposals
+# Remove string proposal
 
-A repository template for ECMAScript proposals.
+TC39 proposal to implement the `String.prototype.remove`.
 
-## Before creating a proposal
+![Proposal Stage 0](https://img.shields.io/badge/Proposal-Stage--0-blue)
+![Version](https://img.shields.io/npm/v/@hotequil/proposal-remove-string.svg)
+![Downloads](https://img.shields.io/npm/dt/@hotequil/proposal-remove-string.svg)
+![License](https://img.shields.io/npm/l/@hotequil/proposal-remove-string)
 
-Please ensure the following:
-  1. You have read the [process document](https://tc39.github.io/process-document/)
-  1. You have reviewed the [existing proposals](https://github.com/tc39/proposals/)
-  1. You are aware that your proposal requires being a member of TC39, or locating a TC39 delegate to “champion” your proposal
+![npm](https://nodei.co/npm/@hotequil/proposal-remove-string.png?downloads=true&downloadRank=true&stars=true)
 
-## Create your proposal repo
+## Reason
 
-Follow these steps:
-  1. Click the green [“use this template”](https://github.com/tc39/template-for-proposals/generate) button in the repo header. (Note: Do not fork this repo in GitHub's web interface, as that will later prevent transfer into the TC39 organization)
-  1. Update ecmarkup and the biblio to the latest version: `npm install --save-dev ecmarkup@latest && npm install --save-dev --save-exact @tc39/ecma262-biblio@latest`.
-  1. Go to your repo settings page:
-      1. Under “General”, under “Features”, ensure “Issues” is checked, and disable “Wiki”, and “Projects” (unless you intend to use Projects)
-      1. Under “Pull Requests”, check “Always suggest updating pull request branches” and “automatically delete head branches”
-      1. Under the “Pages” section on the left sidebar, and set the source to “deploy from a branch”, select “gh-pages” in the branch dropdown, and then ensure that “Enforce HTTPS” is checked.
-      1. Under the “Actions” section on the left sidebar, under “General”, select “Read and write permissions” under “Workflow permissions” and click “Save”
-  1. [“How to write a good explainer”][explainer] explains how to make a good first impression.
+The motivation behind this [proposal](https://es.discourse.group/t/implement-the-string-prototype-remove) is to
+simplify the text replacement within JavaScript. Currently, to remove some text in a `string`, you need to use
+the `replace` or `replaceAll` methods passing an empty `string` as a second parameter. This
+is an ugly way. So this proposal doesn't change the memory value and removes the second parameter.
 
-      > Each TC39 proposal should have a `README.md` file which explains the purpose
-      > of the proposal and its shape at a high level.
-      >
-      > ...
-      >
-      > The rest of this page can be used as a template ...
+## How it works
 
-      Your explainer can point readers to the `index.html` generated from `spec.emu`
-      via markdown like
+It receives one **string** or **RegExp** that returns a new **string**.
 
-      ```markdown
-      You can browse the [ecmarkup output](https://ACCOUNT.github.io/PROJECT/)
-      or browse the [source](https://github.com/ACCOUNT/PROJECT/blob/HEAD/spec.emu).
-      ```
+## Installation
 
-      where *ACCOUNT* and *PROJECT* are the first two path elements in your project's Github URL.
-      For example, for github.com/**tc39**/**template-for-proposals**, *ACCOUNT* is “tc39”
-      and *PROJECT* is “template-for-proposals”.
+Install the package using [npm](https://www.npmjs.com) or another package manager you want.
 
+```shell
+npm install @hotequil/proposal-remove-string
+```
 
-## Maintain your proposal repo
+## Usage
 
-  1. Make your changes to `spec.emu` (ecmarkup uses HTML syntax, but is not HTML, so I strongly suggest not naming it “.html”)
-  1. Any commit that makes meaningful changes to the spec, should run `npm run build` to verify that the build will succeed and the output looks as expected.
-  1. Whenever you update `ecmarkup`, run `npm run build` to verify that the build will succeed and the output looks as expected.
+Import the polyfill in the main, index or app file of your project.
 
-  [explainer]: https://github.com/tc39/how-we-work/blob/HEAD/explainer.md
+```TypeScript
+import "@hotequil/proposal-remove-string";
+```
+
+## Typical cases
+
+Follow the examples in TypeScript below.
+
+```TypeScript
+// Imports omitted…
+
+"bitcoin-mainnet".remove("-mainnet")
+// "bitcoin"
+
+"bitcoin-mainnet".remove(/-mainnet/)
+// "bitcoin"
+
+"bitcoin mainnet mainnet".remove("mainnet", { trim: true })
+// "bitcoin"
+
+"bitcoin mainnet mainnet".remove(/mainnet/, { trim: true })
+// "bitcoin"
+```
+
+## Proposer
+
+- Author: [@hotequil](https://github.com/hotequil);
+- Champion(s): _no one at the moment_.
+
+_This repository there is no other third dependency, see the [package.json](package.json)._
