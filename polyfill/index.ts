@@ -1,23 +1,19 @@
 export {};
 
-type Value = string | RegExp;
-type Options = { trim: boolean };
-
 declare global {
   interface String {
-    remove(value: Value, options?: Options): string;
+    remove(value: string | RegExp): string;
   }
 }
 
 if (!String.prototype.remove) {
   Object.defineProperty(String.prototype, "remove", {
-    value: function (value: Value, options?: Options): string {
+    value: function (value: string | RegExp): string {
       if (!value) {
         throw new TypeError("Value must be provided");
       }
 
-      const trim = options?.trim === true;
-      let pattern: Value;
+      let pattern: string | RegExp;
 
       if (typeof value === "string") {
         pattern = value;
@@ -29,9 +25,7 @@ if (!String.prototype.remove) {
         throw new TypeError("Value must be a string or a RegExp");
       }
 
-      const newString = this.replaceAll(pattern, "");
-
-      return trim ? newString.trim() : newString;
+      return this.replaceAll(pattern, "");
     },
     writable: false,
     configurable: false,

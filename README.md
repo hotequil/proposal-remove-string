@@ -48,12 +48,6 @@ Follow the examples in TypeScript below.
 
 "bitcoin-mainnet".remove(/-mainnet/)
 // "bitcoin"
-
-"bitcoin mainnet mainnet".remove("mainnet", { trim: true })
-// "bitcoin"
-
-"bitcoin mainnet mainnet".remove(/mainnet/, { trim: true })
-// "bitcoin"
 ```
 
 ## Proposer

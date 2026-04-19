@@ -22,40 +22,16 @@ describe("String.prototype.remove", () => {
       expect("bitcoin-mainnet".remove("-mainnet")).toEqual("bitcoin");
     });
 
-    it("Should remove with trim using string", () => {
-      expect("bitcoin mainnet".remove("mainnet", { trim: true })).toEqual(
-        "bitcoin"
-      );
-    });
-
     it("Should remove using RegExp", () => {
       expect("bitcoin-mainnet".remove(/-mainnet/)).toEqual("bitcoin");
-    });
-
-    it("Should remove with trim using RegExp", () => {
-      expect("bitcoin mainnet".remove(/mainnet/, { trim: true })).toEqual(
-        "bitcoin"
-      );
     });
 
     it("Should remove a sequence using string", () => {
       expect("bitcoin-mainnet-mainnet".remove("-mainnet")).toEqual("bitcoin");
     });
 
-    it("Should remove a sequence with trim using string", () => {
-      expect(
-        "bitcoin mainnet mainnet".remove("mainnet", { trim: true })
-      ).toEqual("bitcoin");
-    });
-
     it("Should remove a sequence using RegExp", () => {
       expect("bitcoin-mainnet-mainnet".remove(/-mainnet/)).toEqual("bitcoin");
-    });
-
-    it("Should remove a sequence with trim using RegExp", () => {
-      expect(
-        "bitcoin mainnet mainnet".remove(/mainnet/, { trim: true })
-      ).toEqual("bitcoin");
     });
   });
 });
